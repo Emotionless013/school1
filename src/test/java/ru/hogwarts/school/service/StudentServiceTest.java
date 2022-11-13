@@ -8,6 +8,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.repository.StudentRepository;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -36,7 +38,7 @@ public class StudentServiceTest {
 
     @Test
     public void returnsFoundStudent() {
-        when(repository.findById(id).get()).thenReturn(testStudent);
+        when(repository.findById(id)).thenReturn(Optional.of(testStudent));
         assertEquals(testStudent, out.findStudent(id));
     }
 

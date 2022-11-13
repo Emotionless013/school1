@@ -10,7 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("student")
 public class StudentController {
-    private StudentService studentService;
+    private final StudentService studentService;
 
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
@@ -25,9 +25,6 @@ public class StudentController {
     @GetMapping("{id}")
     public ResponseEntity<Student> getStudent(@PathVariable Long id) {
         Student student = studentService.findStudent(id);
-        if (student == null) {
-            return ResponseEntity.notFound().build();
-        }
         return ResponseEntity.ok(student);
     }
 
