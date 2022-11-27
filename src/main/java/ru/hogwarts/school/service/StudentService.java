@@ -45,4 +45,8 @@ public class StudentService {
         return studentRepository.findAll().stream().
                 filter(e -> e.getFaculty().getId() == facultyID).collect(Collectors.toList());
     }
+
+    public Faculty getFacultyByStudent(Long id) {
+        return studentRepository.findById(id).orElseThrow(StudentNotFoundException::new).getFaculty();
+    }
 }

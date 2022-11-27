@@ -1,5 +1,7 @@
 package ru.hogwarts.school.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,8 +12,9 @@ public class Student {
     private String name;
     private int age;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "faculty_id")
+    @JsonBackReference
     private Faculty faculty;
 
     public Student(Long id, String name, int age) {
@@ -47,7 +50,7 @@ public class Student {
     public void setAge(int age) {
         this.age = age;
     }
-
+    @ManyToOne
     public Faculty getFaculty() {
         return faculty;
     }
