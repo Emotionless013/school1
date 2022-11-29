@@ -50,8 +50,7 @@ public class Student {
     public void setAge(int age) {
         this.age = age;
     }
-    @ManyToOne
-    @JsonBackReference
+
     public Faculty getFaculty() {
         return faculty;
     }
