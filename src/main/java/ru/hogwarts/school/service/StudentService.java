@@ -7,6 +7,7 @@ import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.repository.StudentRepository;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -43,7 +44,7 @@ public class StudentService {
 
     public List<Student> allStudentByFaculty(Long facultyID) {
         return studentRepository.findAll().stream().
-                filter(e -> e.getFaculty().getId() == facultyID).collect(Collectors.toList());
+                filter(e -> Objects.equals(e.getFaculty().getId(), facultyID)).collect(Collectors.toList());
     }
 
     public Faculty getFacultyByStudent(Long id) {

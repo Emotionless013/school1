@@ -51,6 +51,7 @@ public class Student {
         this.age = age;
     }
     @ManyToOne
+    @JsonBackReference
     public Faculty getFaculty() {
         return faculty;
     }
