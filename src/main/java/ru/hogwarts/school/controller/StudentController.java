@@ -62,6 +62,6 @@ public class StudentController {
     @GetMapping("{id}/faculty")
     public ResponseEntity getFacultyByStudent(@PathVariable Long id) {
         Faculty faculty = studentService.getFacultyByStudent(id);
-        return ResponseEntity.ok(faculty);
+        return ResponseEntity.ok(faculty.getName());
     }
 }
